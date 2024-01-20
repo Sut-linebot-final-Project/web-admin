@@ -279,39 +279,31 @@ export const barChartBoxRevenue = {
   ],
 };
 
-export const barChartBoxVisit = {
-  title: "Total Visit",
+export const barChartBoxIntent = {
+  title: "Top 5 Of Intent",
   color: "#FF8042",
-  dataKey: "visit",
+  dataKey: "log",
   chartData: [
     {
-      name: "Sun",
-      visit: 4000,
+      intent: 'Default Fallback Intent',
+      log: 5, 
     },
     {
-      name: "Mon",
-      visit: 3000,
+      intent: 'Default Welcome Intent',
+      log: 3, 
     },
     {
-      name: "Tue",
-      visit: 2000,
+      intent: 'มื้อใดมักเป็นมื้อที่เลิกขวดนมยากที่สุด',
+      log: 1, 
     },
     {
-      name: "Wed",
-      visit: 2780,
+      intent: 'Hello',
+      log: 7,
     },
     {
-      name: "Thu",
-      visit: 1890,
-    },
-    {
-      name: "Fri",
-      visit: 2390,
-    },
-    {
-      name: "Sat",
-      visit: 3490,
-    },
+      intent: 'Bye',
+      log: 7,
+    }
   ],
 };
 

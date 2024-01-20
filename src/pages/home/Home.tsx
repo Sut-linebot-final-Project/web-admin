@@ -1,48 +1,43 @@
 import BarChartBox from "../../components/barChartBox/BarChartBox";
 import BigChartBox from "../../components/bigChartBox/BigChartBox";
 import ChartBox from "../../components/chartBox/ChartBox";
+import { PureComponent } from "react";
 import PieChartBox from "../../components/pieCartBox/PieChartBox";
 import TopBox from "../../components/topBox/TopBox";
 import {
+  barChartBoxIntent,
   barChartBoxRevenue,
-  barChartBoxVisit,
+
   chartBoxConversion,
   chartBoxProduct,
   chartBoxRevenue,
   chartBoxUser,
 } from "../../data";
 import "./home.scss";
+import { BarChart } from "recharts";
+import Example from "../../components/barChart/BarChat";
 
 const Home = () => {
   return (
     <div className="home">
-      <div className="box box1">
-        <TopBox />
-      </div>
       <div className="box box2">
-        <ChartBox {...chartBoxUser} />
+      <h1>Top 3 of Intent</h1>
+        <Example/>
       </div>
-      <div className="box box3">
-        <ChartBox {...chartBoxProduct} />
+      <div className="box box4">
+   
+      </div>
+      <div className="box box4">
+
       </div>
       <div className="box box4">
         <PieChartBox />
       </div>
-      <div className="box box5">
-        <ChartBox {...chartBoxConversion} />
-      </div>
-      <div className="box box6">
-        <ChartBox {...chartBoxRevenue} />
-      </div>
-      <div className="box box7">
-        <BigChartBox />
-      </div>
+
       <div className="box box8">
-        <BarChartBox {...barChartBoxVisit} />
+        <BarChartBox {...barChartBoxIntent} />
       </div>
-      <div className="box box9">
-        <BarChartBox {...barChartBoxRevenue} />
-      </div>
+
     </div>
   );
 };

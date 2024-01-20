@@ -2,10 +2,10 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import "./pieChartBox.scss";
 
 const data = [
-  { name: "Mobile", value: 400, color: "#0088FE" },
-  { name: "Desktop", value: 300, color: "#00C49F" },
-  { name: "Laptop", value: 300, color: "#FFBB28" },
-  { name: "Tablet", value: 200, color: "#FF8042" },
+  { name: "Default Fallback Intent", value: 50, color: "#0088FE" },
+  { name: "Default Welcome Intent", value: 6, color: "#00C49F" },
+  { name: "bye", value: 20, color: "#FFBB28" },
+  { name: "Hello", value: 20, color: "#FF8042" },
 ];
 
 const PieChartBox = () => {
