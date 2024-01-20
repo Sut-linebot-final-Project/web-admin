@@ -4,7 +4,7 @@ export interface IDataList {
 }
 
 export interface IIntent {
-  id: number;
+  id: string;
   intentName: string;
   trainingPhrases: IDataList[];
   perponse: IDataList[];

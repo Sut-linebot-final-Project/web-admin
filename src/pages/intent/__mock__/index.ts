@@ -2,7 +2,7 @@ import { IIntent } from "../interface";
 
 export const intentsData: IIntent[] = [
   {
-    id: 1,
+    id: 'projects/hp-linechatbot-vbbx/agent/intents/1215a393-b350-4eed-9b41-de23e61dc9bc',
     intentName: "Snow",
     trainingPhrases: [
       {
@@ -30,7 +30,7 @@ export const intentsData: IIntent[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     intentName: "Lannister",
     trainingPhrases: [
       {
@@ -54,7 +54,7 @@ export const intentsData: IIntent[] = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     intentName: "Lannister",
     trainingPhrases: [
       {
@@ -78,7 +78,7 @@ export const intentsData: IIntent[] = [
     ],
   },
   {
-    id: 4,
+    id: '4',
     intentName: "Stark",
     trainingPhrases: [
       {
@@ -102,7 +102,7 @@ export const intentsData: IIntent[] = [
     ],
   },
   {
-    id: 5,
+    id: '5',
     intentName: "Targaryen",
     trainingPhrases: [
       {

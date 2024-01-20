@@ -8,6 +8,8 @@ import { SelectElement, TextFieldElement, useForm } from "react-hook-form-mui";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { RegisterForm, TRegisterForm } from "../../lib/validations/register";
+import liff from "@line/liff";
+import { useEffect } from "react";
 
 type SelectType = Record<string, string>;
 
@@ -67,29 +69,89 @@ export default function SignUp() {
   });
   const onSubmit = async (data: RegisterForm) => {
     const delay = 1300;
+    data = Object.assign(data, { line_uid: userId });
 
     console.log(data);
-    await toast.promise(
-      new Promise<void>((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, delay);
-      }),
-      {
-        loading: "Registering...",
-        success: <b>Register successfully</b>,
-        error: <b>Could not register.</b>,
-      }
-    );
 
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        resolve();
-        toast.dismiss();
-        navigate("/");
-      }, delay);
-    });
+    try {
+      // Make an API request to save data
+      const response = await fetch('http://localhost:5000/pg/post/user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers if needed
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Could not register.');
+      }
+
+      // Display success toast
+      await toast.promise(
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, delay);
+        }),
+        {
+          loading: 'Registering...',
+          success: <b>Register successfully</b>,
+          error: <b>Could not register.</b>,
+        }
+      );
+
+      // Redirect to home page after registration
+      navigate('/');
+    } catch (error) {
+      console.error('Error registering:', error);
+      // Display error toast
+      toast.error(<b>Could not register.</b>);
+    }
+
+    // await toast.promise(
+    //   new Promise<void>((resolve) => {
+    //     setTimeout(() => {
+    //       resolve();
+    //     }, delay);
+    //   }),
+    //   {
+    //     loading: "Registering...",
+    //     success: <b>Register successfully</b>,
+    //     error: <b>Could not register.</b>,
+    //   }
+    // );
+
+    // return new Promise<void>((resolve) => {
+    //   setTimeout(() => {
+    //     resolve();
+    //     toast.dismiss();
+    //     navigate("/");
+    //   }, delay);
+    // });
   };
+
+  let userId = "";
+  const main = async () => {
+    await liff.init({ liffId: '2002793864-KgEoXmYm' })
+    // liff.login();
+    if (liff.isLoggedIn()) {
+      console.log('login แล้วนะ')
+      const profile = await liff.getProfile();
+      userId = profile.userId;
+      console.log('line_userID: ',userId);
+
+    } else {
+      liff.login()
+    }
+
+  }
+
+  useEffect(() => {
+    main()
+  });
+
 
   return (
     <ThemeProvider theme={Theme}>
@@ -177,6 +239,7 @@ export default function SignUp() {
               label="เลขหลังบัตรประชาชน"
               name="lasorCode"
             />
+            
             {/* button submit */}
             <Button type={"submit"} variant={"contained"} color={"primary"}>
               Submit
