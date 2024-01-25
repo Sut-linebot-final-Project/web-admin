@@ -1,4 +1,4 @@
-import { Bar, BarChart, ResponsiveContainer, Tooltip } from "recharts";
+import { Bar, BarChart, ResponsiveContainer, Tooltip,XAxis,YAxis } from "recharts";
 import "./barChartBox.scss";
 
 type Props = {
@@ -15,6 +15,8 @@ const BarChartBox = (props: Props) => {
       <div className="chart">
         <ResponsiveContainer width="99%" height={150}>
           <BarChart data={props.chartData}>
+          <XAxis dataKey="intent" angle={-45} textAnchor="end" interval={0}/>
+          <YAxis />
             <Tooltip
               contentStyle={{ background: "#2a3447", borderRadius: "5px" }}
               labelStyle={{ display: "none" }}

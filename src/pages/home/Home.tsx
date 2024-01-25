@@ -24,12 +24,7 @@ const Home = () => {
       <h1>Top 3 of Intent</h1>
         <Example/>
       </div>
-      <div className="box box4">
-   
-      </div>
-      <div className="box box4">
-
-      </div>
+     
       <div className="box box4">
         <PieChartBox />
       </div>
