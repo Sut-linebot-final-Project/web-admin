@@ -10,10 +10,10 @@ import {
   Stack,
   useTheme,
 } from "@mui/material";
-import { IDataList } from "../../pages/intent/interface";
+
 
 type DataListProps = {
-  data?: IDataList[];
+  data?: string[];
   setOpenModal: (value: React.SetStateAction<boolean>) => void;
 };
 
@@ -40,20 +40,21 @@ const DataList = ({ data, setOpenModal }: DataListProps) => {
 
       <Box sx={{ backgroundColor: theme.palette.background.paper }}>
         <List>
-          {data?.map((data) => (
+          {
+          data?.map((data,index) => (
             <ListItem
-              key={data.id}
+              key={index}
               secondaryAction={
                 <IconButton
                   edge="end"
                   aria-label="delete"
-                  onClick={() => handleDelete(data.id)}
+                  // onClick={() => handleDelete(data.id)}
                 >
                   <DeleteIcon color="error" />
                 </IconButton>
               }
             >
-              <ListItemText primary={data.title} />
+              <ListItemText primary={data} />
             </ListItem>
           ))}
         </List>

@@ -2,7 +2,7 @@ import { IIntent } from "../interface";
 
 export const intentsData: IIntent[] = [
   {
-    id: 'projects/hp-linechatbot-vbbx/agent/intents/1215a393-b350-4eed-9b41-de23e61dc9bc',
+    id: 'ลูกควรเลิกขวดนมได้อายุเท่าไร',
     intentName: "Snow",
     trainingPhrases: [
       {

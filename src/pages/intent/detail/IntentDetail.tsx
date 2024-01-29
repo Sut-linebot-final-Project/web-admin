@@ -1,10 +1,21 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextFieldElement } from "react-hook-form-mui";
 import { useNavigate, useParams } from "react-router-dom";
 import DataList from "../../../components/intent/DataList";
 import DataListModal from "../../../components/intent/DataListModal";
 import { useIntentDetail } from "../hooks";
+import { url } from "../../../service/serviceUrl";
+import axios from "axios";
+import { IIntentDetail } from "../interface";
+import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+
+
+
+
+
 
 const IntentDetail = () => {
   const { id } = useParams();
@@ -12,6 +23,24 @@ const IntentDetail = () => {
   const [openTraining, setOpenTraining] = useState(false);
   const [openPerponse, setOpenPerponse] = useState(false);
   const { intent, form, onSubmit } = useIntentDetail(id);
+  const [data, setData] = useState<IIntentDetail>();
+
+
+  useEffect(() => {
+    const apiUrl = `${url}/getintent`;
+    const params = {
+      intentName: id,
+    };
+    axios.post(apiUrl, { params })
+      .then(response => {
+        console.log('API Response:', response.data);
+        setData(response.data);
+        console.log(data?.trainingPhraseText);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
   return (
     <Container>
@@ -40,12 +69,7 @@ const IntentDetail = () => {
             <label>
               <Typography variant="h6">Intent Name :</Typography>
             </label>
-            <TextFieldElement
-              control={form.control}
-              name={"intentName"}
-              placeholder="Type your intent name..."
-              type={"text"}
-            />
+            <TextField id="Name" variant="outlined" defaultValue={id} sx={{ m: 1, width: '75ch' }} />
           </Stack>
 
           {/* training Phrases */}
@@ -57,7 +81,7 @@ const IntentDetail = () => {
             </Stack>
 
             <DataList
-              data={intent?.trainingPhrases}
+              data={data?.trainingPhraseText}
               setOpenModal={setOpenTraining}
             />
           </Box>
@@ -66,12 +90,24 @@ const IntentDetail = () => {
           <Box>
             <Stack direction={"row"} alignItems={"center"} spacing={4}>
               <label>
-                <Typography variant="h6">Perponse :</Typography>
+                <Typography variant="h6">Response :</Typography>
               </label>
             </Stack>
-
-            <DataList data={intent?.perponse} setOpenModal={setOpenPerponse} />
+            {data?.textResponse ? <DataList data={data?.textResponse} setOpenModal={setOpenPerponse} /> : null}
+            
           </Box>
+          {/* {Array.isArray(data) && data.length > 0 && data[0].imageResponse ? (
+            data.map((item) => (
+              <Card key={item.id}>
+                <CardMedia
+                  component="img"
+                  alt="Card Image"
+                  height="140"
+                  image={item.imageResponse}
+                />
+              </Card>
+            ))
+          ) : null} */}
         </Stack>
       </form>
 

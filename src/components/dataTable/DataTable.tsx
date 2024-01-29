@@ -26,7 +26,7 @@ const DataTable = (props: Props) => {
         <div className="action">
           <div
             className="edit"
-            onClick={() => navigate(`/intent/${params.row.id}/detail`)}
+            onClick={() => navigate(`/intent/${params.row.displayName}/detail`)}
           >
             <img src="/view.svg" alt="" />
           </div>

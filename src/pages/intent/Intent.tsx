@@ -40,7 +40,7 @@ const rows = [
   { id: '9', lastName: 'Roxie', firstName: 'Harvey' },
 ];
 async function getIntent() {
-  let res = await axios.post('http://localhost:5000/listintent');
+  let res = await axios.get('http://localhost:5000/listintent');
   // let data = res.data;
   // console.log(res);
   return res
