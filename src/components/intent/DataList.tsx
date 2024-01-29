@@ -20,9 +20,9 @@ type DataListProps = {
 const DataList = ({ data, setOpenModal }: DataListProps) => {
   const theme = useTheme();
 
-  const handleDelete = (id: string) => {
-    console.log(`delete data list id : ${id}`);
-  };
+  // const handleDelete = (id: string) => {
+  //   console.log(`delete data list id : ${id}`);
+  // };
 
   return (
     <Container maxWidth="md">

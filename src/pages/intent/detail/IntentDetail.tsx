@@ -1,6 +1,6 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { TextFieldElement } from "react-hook-form-mui";
+// import { TextFieldElement } from "react-hook-form-mui";
 import { useNavigate, useParams } from "react-router-dom";
 import DataList from "../../../components/intent/DataList";
 import DataListModal from "../../../components/intent/DataListModal";
@@ -9,8 +9,8 @@ import { url } from "../../../service/serviceUrl";
 import axios from "axios";
 import { IIntentDetail } from "../interface";
 import TextField from '@mui/material/TextField';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
+// import Card from '@mui/material/Card';
+// import CardMedia from '@mui/material/CardMedia';
 
 
 
@@ -26,6 +26,7 @@ const IntentDetail = () => {
   const [data, setData] = useState<IIntentDetail>();
 
 
+  console.log(intent);
   useEffect(() => {
     const apiUrl = `${url}/getintent`;
     const params = {
@@ -94,7 +95,7 @@ const IntentDetail = () => {
               </label>
             </Stack>
             {data?.textResponse ? <DataList data={data?.textResponse} setOpenModal={setOpenPerponse} /> : null}
-            
+
           </Box>
           {/* {Array.isArray(data) && data.length > 0 && data[0].imageResponse ? (
             data.map((item) => (

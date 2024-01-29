@@ -12,10 +12,10 @@ const DataTable = (props: Props) => {
     //delete
     console.log(id + "has been deleted!");
   };
-  const handleEdit = (id: number) => {
-    //edit
-    console.log(id + " has been edited!");
-  };
+  // const handleEdit = (id: number) => {
+  //   //edit
+  //   console.log(id + " has been edited!");
+  // };
 
   const actionColumn: GridColDef = {
     field: "action",

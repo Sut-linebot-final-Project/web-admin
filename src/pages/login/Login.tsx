@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Link from '@mui/material/Link'; // เพิ่ม import Link
+// import Link from '@mui/material/Link'; // เพิ่ม import Link
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { CircularProgress, circularProgressClasses, colors, Stack } from '@mui/material';
@@ -35,6 +35,7 @@ export default function Login() {
   const [onRequest, setOnRequest] = useState(false);
   const [loginProgress, setLoginProgress] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log(isLoggedIn);
 
   const onSignin = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -56,14 +57,14 @@ export default function Login() {
       navigate("/home");
     }, 3300);
   };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
 
   return (
     <ThemeProvider theme={Theme}>
